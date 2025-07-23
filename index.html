@@ -1,68 +1,53 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f2f2f2;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Server</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Microsoft Server - Network Security Check</h2>
+    <p>Check the security of your network</p>
 
-.container {
-  max-width: 400px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  margin-top: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
-}
+    <label for="device">Choose your device:</label>
+    <select id="device" onchange="showDeviceFields()">
+      <option value="">Select</option>
+      <option value="android">Android</option>
+      <option value="ios">Apple</option>
+    </select>
 
-h2 {
-  color: #0078d4;
-  text-align: center;
-}
+    <div id="deviceFields"></div>
 
-select, input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
+    <div id="formFields" style="display:none;">
+      <input type="text" placeholder="Mobile Number" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Full Address" required />
+      <button onclick="submitForm()">Submit</button>
+    </div>
 
-button {
-  width: 100%;
-  margin-top: 15px;
-  background-color: #0078d4;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
+    <div id="loading" style="display:none;">
+      <p>Analyzing Network...</p>
+      <div class="loader"></div>
+    </div>
 
-.loader {
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #0078d4;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  margin: 20px auto;
-  animation: spin 1s linear infinite;
-}
+    <div id="result" style="display:none;">
+      <h3>⚠ Security Alert</h3>
+      <p><strong>Your data is being shared with:</strong></p>
+      <ul>
+        <li>🇨🇳 Shanghai, China</li>
+        <li>🇷🇺 Moscow, Russia</li>
+        <li>🇺🇸 California, USA</li>
+        <li>🇺🇸 Texas, USA</li>
+        <li>🇺🇸 New York, USA</li>
+      </ul>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/World_location_map_%28equirectangular_180%29.svg/1280px-World_location_map_%28equirectangular_180%29.svg.png" width="100%" />
+      <p class="danger">Security: 17%</p>
+      <p class="warn">The details you provided are sharing the network with multiple servers.</p>
+    </div>
+  </div>
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.danger {
-  color: red;
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.warn {
-  color: #555;
-  margin-top: 10px;
-  font-size: 14px;
-}
+  <script src="script.js"></script>
+</body>
+</html>
